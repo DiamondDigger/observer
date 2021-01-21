@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <section></section>
+    <section class="content">
+        <div class="left">
+            <img src="images/cat.png" alt="cat" class="cat anim" data-delay="2.6s">
+            <p class="anim" data-delay="1.5s">I have no clue what I'm doing here LOL!</p>
+            <img src="images/squiggly.svg" alt="squig" class="squig anim" data-delay="1s">
+        </div>
+        <div class="right">
+            <div class="anim" data-delay="3.2s">
+                <h2>You get a cat</h2>
+                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "</p>
+            </div>
+        </div>    
+    </section>
+</body>
+
+<script>
+    const images = document.querySelectorAll('.anim');
+
+    observer = new IntersectionObserver((entries) => {
+        console.log(entries);
+
+        entries.forEach(entry => {   
+            console.log(entry.target)
+            if (entry.isIntersecting){
+                entry.target.style.animationDuration = `${entry.target.dataset.delay}`;
+                entry.target.style.animationTimingFunction = 'easy-out';
+                entry.target.style.animationFillMode = 'forwards';
+                entry.target.style.animationName = 'anim1';
+            } else {
+                entry.target.style.animation = 'none';
+                // observer.unobserve(entry.target)
+            }
+        });
+    })
+
+    images.forEach(image => {
+        observer.observe(image);
+    })
+</script>
+</html>
