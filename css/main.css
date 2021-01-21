@@ -18,6 +18,21 @@ section {
   border: 2px solid greenyellow;
 }
 
+.greeting {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  place-items: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.creative {
+  width: 75%;
+  opacity: 0;
+}
+
 .content {
   display: -ms-grid;
   display: grid;
@@ -93,6 +108,34 @@ section {
 }
 
 @-webkit-keyframes anim1 {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: rotate(340deg);
+            transform: rotate(340deg);
+  }
+}
+
+@keyframes anim1 {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: rotate(340deg);
+            transform: rotate(340deg);
+  }
+}
+
+@-webkit-keyframes anim2 {
   from {
     -webkit-transform: translateY(-100px);
             transform: translateY(-100px);
@@ -105,7 +148,7 @@ section {
   }
 }
 
-@keyframes anim1 {
+@keyframes anim2 {
   from {
     -webkit-transform: translateY(-100px);
             transform: translateY(-100px);

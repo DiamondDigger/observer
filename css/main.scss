@@ -18,6 +18,18 @@ section {
   border: 2px solid greenyellow;
 }
 
+.greeting {
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+  object-fit: cover;
+}
+
+.creative {
+  width: 75%;
+  opacity: 0;
+}
+
 .content {
   display: grid;
   grid-template-columns: 70% auto;
@@ -89,6 +101,19 @@ section {
 }
 
 @keyframes anim1 {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(340deg);
+  }
+}
+
+@keyframes anim2 {
   from {
     transform: translateY(-100px);
     opacity: 0;

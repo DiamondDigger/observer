@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <section></section>
+    <section class="greeting"  >
+        <img src="images/creative.svg" alt="creative" class="creative">
+    </section>
     <section class="content">
         <div class="left">
-            <img src="images/cat.png" alt="cat" class="cat anim" data-delay="2.6s">
+            <img src="images/cat.png" alt="cat" class="cat anim" >
             <p class="anim" data-delay="1.5s">I have no clue what I'm doing here LOL!</p>
             <img src="images/squiggly.svg" alt="squig" class="squig anim" data-delay="1s">
         </div>
@@ -25,18 +27,36 @@
 </body>
 
 <script>
+    const greeting = document.querySelector('.creative')
+    
+    slider = new IntersectionObserver(entry => {
+        console.log('slider entry', entry[0])
+        if (entry[0].isIntersecting) {
+            entry[0].target.style.animationDuration = '2.5s';
+            entry[0].target.style.animationDelay = '0.4s';
+            entry[0].target.style.animationTimingFunction = 'easy-out';
+            entry[0].target.style.animationFillMode = 'forwards';
+            entry[0].target.style.animationName = 'anim1';
+        } else {
+            entry[0].target.style.animation = 'none';
+        }
+    })
+    
+    slider.observe(greeting)
+    
     const images = document.querySelectorAll('.anim');
 
     observer = new IntersectionObserver((entries) => {
         console.log(entries);
-
+        
         entries.forEach(entry => {   
             console.log(entry.target)
             if (entry.isIntersecting){
-                entry.target.style.animationDuration = `${entry.target.dataset.delay}`;
+                entry.target.style.animationDuration = '2s';
+                entry.target.style.animationDelay = `${entry.target.dataset.delay}`;
                 entry.target.style.animationTimingFunction = 'easy-out';
                 entry.target.style.animationFillMode = 'forwards';
-                entry.target.style.animationName = 'anim1';
+                entry.target.style.animationName = 'anim2';
             } else {
                 entry.target.style.animation = 'none';
                 // observer.unobserve(entry.target)
@@ -47,5 +67,6 @@
     images.forEach(image => {
         observer.observe(image);
     })
+
 </script>
 </html>
