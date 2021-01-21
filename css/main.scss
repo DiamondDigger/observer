@@ -94,6 +94,9 @@ section {
     padding: 8px;
     width: 24vw;
   }
+  .creative {
+    width: 50%;
+  }
 }
 
 .anim {
@@ -102,7 +105,7 @@ section {
 
 @keyframes anim1 {
   0% {
-    opacity: 0;
+    opacity: 1;
   }
   50% {
     opacity: 0.5;
